@@ -25,8 +25,10 @@ const caesarModule = (function () {
         const letterPosition = alphabet.indexOf(letter)
         //if its a letter perform shift if not go ahead and push the value
         if (letter.match(/[a-z]/i)){
-          const newPosition = (letterPosition + shiftValue) % 26
-          console.log(newPosition)
+          let newPosition = (letterPosition + shiftValue) % 26
+          if (newPosition<0){
+            newPosition = 26 + newPosition
+          }
           acc.push(alphabet[newPosition])
         }else{
           acc.push(letter);
