@@ -6,6 +6,7 @@
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
   function isUnique(str) {
+    //if str is not a set then there is a duplicate
     return new Set(str).size === str.length;
   }
   function substitution(input, alphabet, encode = true) {

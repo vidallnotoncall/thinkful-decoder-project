@@ -16,12 +16,12 @@ describe("polybius", () => {
   });
 
   it(`should ignore capital letters`, () => {
-    const actual = caesar("JULY FOR BIOSHOCK");
+    const actual = polybius("JULY FOR BIOSHOCK");
     const expected = "42541345 124324 21424334433152";
     expect(actual).to.eql(expected);
   });
   it(`should maintain spacing encoding`, () => {
-    const actual = caesar("JULY FOR BIOSHOCK");
+    const actual = polybius("JULY FOR BIOSHOCK");
     const expected = "42541345 124324 21424334433152";
     expect(actual).to.eql(expected);
   });
