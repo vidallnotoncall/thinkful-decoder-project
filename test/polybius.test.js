@@ -3,21 +3,31 @@ const { expect } = require("chai");
 const { polybius } = require("../src/polybius.js");
 
 describe("polybius", () => {
-  it(`should return false`, () => {
-    const actual = polybius("thinkful");
-    const expected = false;
+  it(`should translate I and J to 42`, () => {
+    const actual = polybius("july for bioshock");
+    const expected = "42541345 124324 21424334433152";
     expect(actual).to.eql(expected);
   });
 
-  it(`should return false`, () => {
-    const actual = caesar("thinkful", 100);
-    const expected = false;
+  it(`should translate 42 to i or j`, () => {
+    const actual = polybius("42541345 124324 21424334433152", false);
+    const expected = "(i/j)uly for b(i/j)oshock";
     expect(actual).to.eql(expected);
   });
 
-  it(`should return false`, () => {
-    const actual = caesar("thinkful", -26);
-    const expected = false;
+  it(`should ignore capital letters`, () => {
+    const actual = caesar("JULY FOR BIOSHOCK");
+    const expected = "42541345 124324 21424334433152";
+    expect(actual).to.eql(expected);
+  });
+  it(`should maintain spacing encoding`, () => {
+    const actual = caesar("JULY FOR BIOSHOCK");
+    const expected = "42541345 124324 21424334433152";
+    expect(actual).to.eql(expected);
+  });
+  it(`should maintain spacing decoding`, () => {
+    const actual = polybius("11 22434341 3143423151", false);
+    const expected = "a good choice";
     expect(actual).to.eql(expected);
   });
 });
