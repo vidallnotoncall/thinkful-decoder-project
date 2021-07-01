@@ -67,7 +67,7 @@ const polybiusModule = (function () {
       if (!decodeCheck(input)) return false;
       //divide the encoded string by every two
       let inputArray = splitNumbers(input);
-      console.log(inputArray);
+
       res = inputArray.reduce((acc, char) => {
         //find matching letter object
         let charPlace = grid.findIndex((object) => object.place === char);
