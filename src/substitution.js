@@ -5,36 +5,36 @@
 
 const substitutionModule = (function () {
   // you can add any code you want within this function scope
-  function isUnique(str){
-    return new Set(str).size === str.length
+  function isUnique(str) {
+    return new Set(str).size === str.length;
   }
   function substitution(input, alphabet, encode = true) {
-    if (!alphabet || alphabet.length !== 26 || !isUnique(alphabet)) return false;
+    if (!alphabet || alphabet.length !== 26 || !isUnique(alphabet))
+      return false;
 
     let res = "";
-    let realAlphabet = "abcdefghijklmnopqrstuvwxyz"
+    let realAlphabet = "abcdefghijklmnopqrstuvwxyz";
 
-  res = input
-  .toLowerCase()
-  .split('')
-  .reduce((acc, char) =>{
+    res = input
+      .toLowerCase()
+      .split("")
+      .reduce((acc, char) => {
+        if (char === " ") {
+          acc.push(" ");
+        }
+        if (encode === true) {
+          let spot = realAlphabet.indexOf(char);
+          acc.push(alphabet.charAt(spot));
+        } else {
+          let spot = alphabet.indexOf(char);
+          acc.push(realAlphabet.charAt(spot));
+        }
 
-    if (char === " "){
-      acc.push(" ")
-    }
-    if (encode === true){
-      let spot = realAlphabet.indexOf(char)
-      acc.push(alphabet.charAt(spot))
-    }else{
-      let spot = alphabet.indexOf(char);
-      acc.push(realAlphabet.charAt(spot));
-    }
+        return acc;
+      }, []);
 
-    return acc;
-  }, [])
-
-  return res.join('')
-}
+    return res.join("");
+  }
   return {
     substitution,
   };

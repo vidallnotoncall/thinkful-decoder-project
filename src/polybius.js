@@ -13,24 +13,22 @@ const polybiusModule = (function () {
         tempArray.push(char);
         if (tempArray.length === 2) {
           acc.push(tempArray.join(""));
-          tempArray = [];        
+          tempArray = [];
+        }
       }
-    }
       return acc;
     }, []);
     return newArray;
   };
 
   const decodeCheck = (string) => {
-    //if spaces check for even without spaces
-    console.log(string.split(" ").join("").length);
-    if (string.split(" ").join("").length % 2 > 0){
-      return false
-    }else{
-      return true
+    //check for even without spaces
+    if (string.split(" ").join("").length % 2 > 0) {
+      return false;
+    } else {
+      return true;
     }
-      
-  }
+  };
   function polybius(input, encode = true) {
     // grid in the form of an array of objects
     const grid = [
@@ -63,17 +61,15 @@ const polybiusModule = (function () {
     ];
 
     let res = "";
-    console.log(input)
+    console.log(input);
     if (encode === false) {
       //logic for decoding
       if (!decodeCheck(input)) return false;
       //divide the encoded string by every two
-      //let inputArray = input.match(/.{1,2}/g);
       let inputArray = splitNumbers(input);
-      console.log(inputArray)
+      console.log(inputArray);
       res = inputArray.reduce((acc, char) => {
         //find matching letter object
-        console.log(char);
         let charPlace = grid.findIndex((object) => object.place === char);
 
         let newChar = "";
@@ -91,7 +87,6 @@ const polybiusModule = (function () {
         return acc;
       }, []);
       res = res.join("");
-      
     } else {
       //logic for encoding
       let inputArray = input.toLowerCase().split("");

@@ -7,36 +7,63 @@ const caesarModule = (function () {
   // you can add any code you want within this function scope
 
   function caesar(input, shift, encode = true) {
-    if (!shift || shift === 0 || shift < -25 || shift > 25){
+    if (!shift || shift === 0 || shift < -25 || shift > 25) {
       return false;
-    }  
+    }
     //alphabet for shifting
-    const alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-    
+    const alphabet = [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e",
+      "f",
+      "g",
+      "h",
+      "i",
+      "j",
+      "k",
+      "l",
+      "m",
+      "n",
+      "o",
+      "p",
+      "q",
+      "r",
+      "s",
+      "t",
+      "u",
+      "v",
+      "w",
+      "x",
+      "y",
+      "z",
+    ];
+
     let res = "";
     //if encoding use regular shift value is decoding use opposite
-    const shiftValue = (encode === true) ? shift : shift * -1;
-    console.log(shift)
-      res = input
+    const shiftValue = encode === true ? shift : shift * -1;
+    console.log(shift);
+    res = input
       .toLowerCase()
-      .split('')
-      .reduce((acc, letter) =>{
+      .split("")
+      .reduce((acc, letter) => {
         //current position of letter in alphabet
-        const letterPosition = alphabet.indexOf(letter)
+        const letterPosition = alphabet.indexOf(letter);
         //if its a letter perform shift if not go ahead and push the value
-        if (letter.match(/[a-z]/i)){
-          let newPosition = (letterPosition + shiftValue) % 26
-          if (newPosition<0){
-            newPosition = 26 + newPosition
+        if (letter.match(/[a-z]/i)) {
+          let newPosition = (letterPosition + shiftValue) % 26;
+          if (newPosition < 0) {
+            newPosition = 26 + newPosition;
           }
-          acc.push(alphabet[newPosition])
-        }else{
+          acc.push(alphabet[newPosition]);
+        } else {
           acc.push(letter);
         }
         return acc;
-      }, [])
-    
-      return res.join('');
+      }, []);
+
+    return res.join("");
   }
 
   return {
