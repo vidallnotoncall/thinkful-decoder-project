@@ -1,6 +1,6 @@
 // Write your tests here!
 const { expect } = require("chai");
-const caesar = require("../src/caesar.js");
+const {caesar} = require("../src/caesar.js");
 
 describe("caesar", () => {
   it(`should return false`, () => {
